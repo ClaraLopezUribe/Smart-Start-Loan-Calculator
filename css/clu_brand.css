@@ -1,0 +1,25 @@
+:root{
+    
+/*CSS HEX */
+--red-violet: #d20a96ff;
+--eminence: #7f2e89ff;
+--white: #fefefeff;
+--teal: #128082ff;
+--ultra-violet: #636692ff;
+--celestial-blue: #058ed9ff;
+--hunyadi-yellow: #e09f3eff;
+--gunmetal: #232c33ff;
+--orange-pantone: #ff5900ff;
+
+/* CSS HSL */
+--red-violet: hsla(318, 91%, 43%, 1);
+--eminence: hsla(293, 50%, 36%, 1);
+--white: hsla(0, 0%, 100%, 1);
+--teal: hsla(181, 76%, 29%, 1);
+--ultra-violet: hsla(236, 19%, 48%, 1);
+--celestial-blue: hsla(201, 95%, 44%, 1);
+--hunyadi-yellow: hsla(36, 72%, 56%, 1);
+--gunmetal: hsla(206, 19%, 17%, 1);
+--orange-pantone: hsla(21, 100%, 50%, 1);
+
+}
