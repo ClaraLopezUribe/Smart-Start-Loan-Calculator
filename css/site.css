@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6{
     color: var(--lightmode-primary);
 }
 
-.subheading{
+.subheading {
     color: var(--lightmode-accent);
 }
 
@@ -67,6 +67,10 @@ main>.container{
 
 .checklist >li i{
     color: var(--lightmode-accent);    
+}
+
+.cost {
+    color: var(--lightmode-accent);
 }
 
 .alert{
