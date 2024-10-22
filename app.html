@@ -63,9 +63,9 @@
                 <p>Enter the terms of your loan to calculate your monthly payments, the total cost of the loan, and how payments break down by principle and interest each month.</p>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-2 g-5 py-4 m-3">
+            <section class="row row-cols-1 row-cols-md-2 g-5 m-3 ">
 
-                <div class="col col-lg-7 p-4">
+                <div class="col col-lg-7 p-4 custom-dark">
                     <form- class="row row-cols-1 gy-3 gx-2">
                         <div class="col"> <!--the accessible name comes from the label for associacion of the input element. There is no need to add aria-label or aria-labelledby -->
                             <label for="loanAmout" class="mb-1">Total Loan Amount</label>
@@ -80,17 +80,17 @@
                             <input id="interestRate" type="number" min="0" class="form-control" placeholder="Interest Rate %" value="">
                         </div>
                         <div class="col-12 d-flex mt-3">
-                            <button id="btnSubmit" type="button" class="btn btn-outline-secondary btn-lg">Calculate Payment</button>
+                            <button id="btnSubmit" type="button" class="btn btn-outline-light btn-lg">Calculate Payment</button>
                         </div>                    
                     </form->
                 </div>
 
-                <div class="col col-lg-5 border border-secondary ">
+                <div class="col col-lg-5 custom-dark">
                     <div class="col p-3">
-                        <h2 class="text-center">Your Monthly Payments</h2>
-                        <div class="text-center display-6 fw-normal cost m-3" id="monthlyPayment"><span class="dollar">$</span></div>
+                        <h2 class="text-center custom-dark-heading">Your Monthly Payments</h2>
+                        <div class="text-center display-6 fw-normal payment m-3" id="monthlyPayment">$00.00</div>
                         <div class="table-responsive">
-                            <table class="table table-responsive table-borderless">
+                            <table class="table table-responsive table-borderless text-light">
                                 <thead>
                                     <tr>
                                         <th>Total Interest:</th>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div class="row">
                 <h2 class="mt-5 border-bottom border-2">Amortization Schedule</h2> 

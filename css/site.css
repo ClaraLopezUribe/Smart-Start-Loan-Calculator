@@ -66,10 +66,19 @@ main>.container{
 }
 
 .checklist >li i{
-    color: var(--lightmode-accent);    
+    color: var(--lightmode-accent);
 }
 
-.cost {
+.custom-dark{
+    background-color: var(--dark);
+    color: var(--darkmode-primary)
+}
+
+.custom-dark-heading{
+    color: var(--darkmode-accent);
+}
+
+.payment{
     color: var(--lightmode-accent);
 }
 
