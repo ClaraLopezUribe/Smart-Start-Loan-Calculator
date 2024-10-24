@@ -1,7 +1,6 @@
 /* CONTROL: */
 
  // Don't forget to wire up an event listener to activate the JS : Match the function name exactly as it appears in the addEventListener parameter
-
 function getValues() {
 
     // retrieve user input
@@ -9,53 +8,69 @@ function getValues() {
     let term = document.getElementById("term").value;
     let interestRate = document.getElementById("interestRate").value;
 
-    // validate and convert user input to Numbers; can be accomplished a number of ways as below
+    // convert user input to Numbers; can be accomplished a number of ways, as shown below
     loanAmount = Number(loanAmount);
     term = (term * 1);
     interestRate = parseFloat(interestRate);
 
-    // assign the returned value of the monthlyPayment() function to a variable
-    let yourPayment = monthlyPayment (loanAmount, term, interestRate);
+    calculateTotals(loanAmount, term, interestRate);
     
-    display(yourPayment);
 }
 
-//Total Monthly Payment = (amount loaned) * (rate/1200) / (1 – (1 + rate/1200)(rised to the power of -Number of Months) )
-function monthlyPayment(loanAmount, term, interestRate) { 
+function calculateTotals(loanAmount, term,interestRate) {
 
-    let monthlyInterest = interestRate/1200;
-    let yourPayment = (loanAmount * monthlyInterest)/(1-(1 + monthlyInterest)**(-(term)));
+    let monthlyRate = interestRate/1200;
+    let yourPayment = (loanAmount * monthlyRate)/(1-(1 + monthlyRate)**(-(term)));
+    let totalInterest = loanAmount * monthlyRate * term;
+    let totalCost = loanAmount + totalInterest;
+
+    displayTotals(yourPayment, loanAmount, totalInterest, totalCost);
+}
+
+function displayTotals(yourPayment, loanAmount, totalInterest, totalCost) {
+
+    document.getElementById("yourPayment").innerHTML = ` $${yourPayment.toFixed(2)}`;
+    document.getElementById("totalPrincipal").innerHTML = ` $${loanAmount.toFixed(2)}`;
+    document.getElementById("totalInterest").innerHTML = ` $${totalInterest.toFixed(2)}`;
+    document.getElementById("totalCost").innerHTML = ` $${totalCost.toFixed(2)}`
+
+}
+
+
+
     
-    yourPayment = yourPayment.toFixed(2)
+/*    let remainingBalance = remainingBalance(loanAmount);
+    let interestPayment = interestPayment(remainingBalance);
+    let principalPayment = principalPayment();
 
-    return yourPayment;
+    
+} */
+
+/*function principalPayment() {
+
+    yourPayment - interestPayment
+}
+
+function remainingBalance(remainingBalance) {
+
+    remainingBalance - principalPayment
 
 }
 
-function display(yourPayment) {
+function interestPayment(remainingBalance, monthlyRate) {
 
-    document.getElementById("yourPayment").innerHTML = `$${yourPayment}`;
+    remainingBalance * monthlyRate
+} */
 
-}
-
-
-
-
- /* loanAmount = Number(loanAmount);
-    term = Number(term);
-    interestRate = Number(interestRate) */
-
-
-
-
-//will need to convert to currency?
-    //let termInMonths = document.getElementFromId("term"); //will need to convert to number
-    //let ratePercent = document.getElementFromId("interestRate"); //percent type or number with % symble on the outside of input box?
 
 
 /* Terminology
 
-let totalInterest = document.getElementById("totalInterest");
+
+
+
+
+
 let totalCost = document.getElementById("totalCost");
 
 
