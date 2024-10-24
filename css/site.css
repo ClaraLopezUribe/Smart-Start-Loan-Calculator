@@ -14,6 +14,9 @@
     --lightmode-accent: #ff5900ff;
     --darkmode-accent: #1cccce;
     --darkmode-primary: #e09f3e;
+
+    --custom-dark: #071a1a;
+    --test: #1a8688;
 }
 
 body{
@@ -71,11 +74,11 @@ main>.container{
 
 .custom-dark{
     background-color: var(--dark);
-    color: var(--darkmode-primary)
+    color: var(--light);
 }
 
 .custom-dark-heading{
-    color: var(--darkmode-accent);
+    color: var(--light);
 }
 
 .payment{
