@@ -4,58 +4,46 @@
 
 function getValues() {
 
+    // retrieve user input
     let loanAmount = document.getElementById("loanAmount").value; 
-    let termMonths = document.getElementById("term").value;
+    let term = document.getElementById("term").value;
     let interestRate = document.getElementById("interestRate").value;
 
-    validateInput()
+    // validate and convert user input to Numbers; can be accomplished a number of ways as below
+    loanAmount = Number(loanAmount);
+    term = (term * 1);
+    interestRate = parseFloat(interestRate);
 
-    let totalPrinciple = loanAmount;
+    // assign the returned value of the monthlyPayment() function to a variable
+    let yourPayment = monthlyPayment (loanAmount, term, interestRate);
     
-
-    monthlyPayment()
-    display ()
-    
+    display(yourPayment);
 }
-
-validateInput(loanAmount, term, interestRate) {
-
-    if (!Number.isInteger(Number (value)));
-
-}
-
-
 
 //Total Monthly Payment = (amount loaned) * (rate/1200) / (1 – (1 + rate/1200)(rised to the power of -Number of Months) )
+function monthlyPayment(loanAmount, term, interestRate) { 
 
-function monthlyPayment(loanAmount,interestRate,termMonths ) { 
+    let monthlyInterest = interestRate/1200;
+    let yourPayment = (loanAmount * monthlyInterest)/(1-(1 + monthlyInterest)**(-(term)));
+    
+    yourPayment = yourPayment.toFixed(2)
 
+    return yourPayment;
 
+}
 
-    loanAmount * 
+function display(yourPayment) {
 
-
-
-
+    document.getElementById("yourPayment").innerHTML = `$${yourPayment}`;
 
 }
 
 
 
 
-
-
-
-function display() {
-
-    document.getElementById("totalPrinciple").innerHTML = totalPrinciple;
-
-}
-
-
-
-
-
+ /* loanAmount = Number(loanAmount);
+    term = Number(term);
+    interestRate = Number(interestRate) */
 
 
 
