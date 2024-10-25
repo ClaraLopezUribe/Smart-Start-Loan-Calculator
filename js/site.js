@@ -31,10 +31,6 @@ function calculateTotals(loanAmount, term,interestRate) {
     let totalInterest = loanAmount * monthlyRate * term;
     let totalCost = loanAmount + totalInterest;
     let yourPayment = (loanAmount * monthlyRate)/(1-(1 + monthlyRate)**(-(term)));
-
-    let remainingBalance = loanAmount;
-    let interest = remainingBalance * monthlyRate;
-    let principal = yourPayment - interest;
       
     let returnObject = {};
 
@@ -44,11 +40,7 @@ function calculateTotals(loanAmount, term,interestRate) {
     returnObject.totalInterest = totalInterest;
     returnObject.totalCost = totalCost;
     returnObject.yourPayment = yourPayment;
-    returnObject.remainingBalance = remainingBalance;
-    returnObject.interest = interest;
-    returnObject.principal = principal;
-
-
+   
     return returnObject;
 
 }
@@ -61,10 +53,22 @@ function calculatePayoffSchedule(returnObject) {
     //create array to hold values for table rows
     let payoffArray = [];
 
+    // Before 1st iteration remaining balance = loanAmount
+    let remainingBalance = returnObject.loanAmount;
+    let interest;
+    let principal; 
+    let interestToDate = 0;
+
     for (let i = 1; i <= returnObject.term; i++) {
- 
-        payoffArray.push(i, returnObject.yourPayment.toFixed(2), returnObject.principal.toFixed(2), returnObject.interest.toFixed(2), "tbd" , "tbd");
         
+        interest = remainingBalance * returnObject.monthlyRate;
+        principal = returnObject.yourPayment - interest;
+        interestToDate = interest + interestToDate;
+                
+        remainingBalance -= principal;
+
+        payoffArray.push(i, returnObject.yourPayment.toFixed(2), principal.toFixed(2), interest.toFixed(2), interestToDate.toFixed(2), remainingBalance.toFixed(2));
+
     }
 
     return payoffArray;
