@@ -69,15 +69,15 @@
                     <form- class="row row-cols-1 gy-3 gx-2">
                         <div class="col"> <!--the accessible name comes from the label for associacion of the input element. There is no need to add aria-label or aria-labelledby -->
                             <label for="loanAmout" class="mb-1">Total Loan Amount</label>
-                            <input id="loanAmount" type="number" min="0" class="form-control" placeholder="25000" value="">
+                            <input id="loanAmount" type="number" min="0" class="form-control" placeholder="$00.00" value="">
                         </div>
                         <div class="col">
                             <label for="term" class="mb-1">Term (Months)</label>
-                            <input id="term" type="number" min="0" class="form-control" placeholder="60" value="">
+                            <input id="term" type="number" min="0" class="form-control" placeholder="Number of Months" value="">
                         </div>
                         <div class="col">
                             <label for="interestRate" class="mb-1">Interest Rate (%)</label>
-                            <input id="interestRate" type="number" min="0" class="form-control" placeholder="Interest Rate %" value="">
+                            <input id="interestRate" type="number" min="0" class="form-control" placeholder="0.0%" value="">
                         </div>
                         <div class="col-12 d-flex mt-3">
                             <button id="btnSubmit" type="button" class="btn btn-outline-light btn-lg">Calculate Payment</button>
@@ -123,7 +123,7 @@
                                 <th>Remaining Balance</th>
                             </tr>
                         </thead>
-                        <tbody id="results">
+                        <tbody id="results" class="text-center">
                             <!--Results Go Here-->
                         </tbody>
                     </table>
