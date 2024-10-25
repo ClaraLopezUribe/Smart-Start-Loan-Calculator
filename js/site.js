@@ -1,6 +1,6 @@
 /* CONTROL: */
 
- // Don't forget to wire up an event listener to activate the JS : Match the function name exactly as it appears in the addEventListener parameter
+ // Don't forget to wire up an event listener to activate the JS : The initial function name must match exactly with the addEventListener parameter
 function getValues() {
 
     // retrieve user input
@@ -108,19 +108,113 @@ function calculatePayoffSchedule(returnObject) {
 
 function displayTotals(returnObject) {
 
-    document.getElementById("yourPayment").innerHTML = ` $${yourPayment.toFixed(2)}`;
-    document.getElementById("totalPrincipal").innerHTML = ` $${loanAmount.toFixed(2)}`;
-    document.getElementById("totalInterest").innerHTML = ` $${totalInterest.toFixed(2)}`;
-    document.getElementById("totalCost").innerHTML = ` $${totalCost.toFixed(2)}`
-
-
-
-/* Create a tabel template with the following columns:
-Month (display numbers 1- termInMonths), Payment, Principle, Interest, Interest to date, Remaining Balance
-
-To the document set the values of the table data (id="results") */
+    document.getElementById("yourPayment").innerHTML = ` $${returnObject.yourPayment.toFixed(2)}`;
+    document.getElementById("totalPrincipal").innerHTML = ` $${returnObject.loanAmount.toFixed(2)}`;
+    document.getElementById("totalInterest").innerHTML = ` $${returnObject.totalInterest.toFixed(2)}`;
+    document.getElementById("totalCost").innerHTML = ` $${returnObject.totalCost.toFixed(2)}`;
 
 }
+
+/* Create a tabel template with the following columns:
+Month (display numbers 1 through returnObject.term), Payment, Principle, Interest, Interest to date, Remaining Balance */
+
+//To the document set the values of the table data (id="results") 
+function displayScheduleTable(payoffArray) {
+
+     // Get the table body element from the page
+     let tableBody = document.getElementById("results");
+
+     // Get the template element from the page
+    let templateRow = document.getElementById("payoffTemplate");
+
+     // Clear the table first
+     tableBody.innerHTML = "";
+
+     for (let index = 0; index < payoffArray.length; index += 6) {
+        
+        // Make a copy/fragment of the template row with importNode
+        let tableRow = document.importNode(templateRow.content, true);
+    
+        // Get just the td and put them into an array to check its length
+        let rowCols = tableRow.querySelectorAll("td");
+    
+        rowCols[0].classList.add(payoffArray[index]);
+        rowCols[0].textContent = (payoffArray[index]);
+        rowCols[1].classList.add(payoffArray[index+1]);
+        rowCols[1].textContent = payoffArray[index+1];
+        rowCols[2].classList.add(payoffArray[index+2]);
+        rowCols[2].textContent = payoffArray[index+2];
+        rowCols[3].classList.add(payoffArray[index+3]);
+        rowCols[3].textContent = payoffArray[index+3];
+        rowCols[4].classList.add(payoffArray[index+4]);
+        rowCols[4].textContent = payoffArray[index+4];
+        rowCols[5].classList.add(payoffArray[index+5]);
+        rowCols[5].textContent = payoffArray[index+5];
+       
+        tableBody.appendChild(tableRow);
+
+       }
+}
+
+ //Adjust for loop for SMART START APP
+    /* calculate remaining balance. before 1st month this = loanAmount)
+    
+        returnObject.remainingBalance -= returnObject.principal;
+
+        return payoffObject; */
+
+
+
+
+/***** DISPLAY function *****/
+
+/* Create a table to display the results of the fizzBuzz function
+function displayData(fbArray) {
+
+    // Get the table body element from the page
+    let tableBody = document.getElementById("results");
+ 
+    // Get the template element from the page
+    let templateRow = document.getElementById("fbTemplate");
+ 
+    // Clear the table first
+    tableBody.innerHTML = "";
+ 
+    for (let index = 0; index < fbArray.length; index += 5) {
+ 
+     // Make a copy/fragment of the template row with importNode
+     let tableRow = document.importNode(templateRow.content, true);
+ 
+     // Get just the td and put them into an array to check its length
+     let rowCols = tableRow.querySelectorAll("td");
+ 
+     rowCols[0].classList.add(fbArray[index]);
+     rowCols[0].textContent = fbArray[index];
+     rowCols[1].classList.add(fbArray[index+1]);
+     rowCols[1].textContent = fbArray[index+1];
+     rowCols[2].classList.add(fbArray[index+2]);
+     rowCols[2].textContent = fbArray[index+2];
+     rowCols[3].classList.add(fbArray[index+3]);
+     rowCols[3].textContent = fbArray[index+3];
+     rowCols[4].classList.add(fbArray[index+4]);
+     rowCols[4].textContent = fbArray[index+4];
+ 
+     tableBody.appendChild(tableRow);
+ 
+    }
+ 
+ }
+ 
+ 
+     
+    
+     
+ /* TEMPLATE TAGS: VIDEO 35:14 */
+           
+         
+  
+
+
 
 /* Specifications:
 
