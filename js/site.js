@@ -15,8 +15,12 @@ function getValues() {
     interestPaid(previousBalance)
     interestToDate()*/
 
-    let yourPayment = calculateTotals(loanAmount, term, interestRate);
+    let returnObject = calculateTotals(loanAmount, term, interestRate);
 
+    let payoffArray = calculatePayoffSchedule(returnObject);
+
+    displayTotals(returnObject);
+    displayScheduleTable(payoffArray);
 
 }
 
@@ -31,50 +35,78 @@ function calculateTotals(loanAmount, term,interestRate) {
     interestRate = parseFloat(interestRate);
 
     let monthlyRate = interestRate/1200;
-
     let totalInterest = loanAmount * monthlyRate * term;
     let totalCost = loanAmount + totalInterest;
-
     let yourPayment = (loanAmount * monthlyRate)/(1-(1 + monthlyRate)**(-(term)));
 
-    displayTotals(yourPayment, loanAmount, totalInterest, totalCost);
+    let remainingBalance = loanAmount;
+    let interest = remainingBalance * monthlyRate;
+    let principal = yourPayment - interest;
+      
+    let returnObject = {};
 
-    return yourPayment;
+    returnObject.loanAmount = loanAmount;
+    returnObject.term = term;   
+    returnObject.monthlyRate = monthlyRate;
+    returnObject.totalInterest = totalInterest;
+    returnObject.totalCost = totalCost;
+    returnObject.yourPayment = yourPayment;
+    returnObject.remainingBalance = remainingBalance;
+    returnObject.interest = interest;
+    returnObject.principal = principal;
+
+
+    return returnObject;
 }
 
 
-// create amortization schedule calculations
+/* create amortization schedule */
 
-/* function remainingBalance(loanAmount) {
-
-
-Remaining Balance before the very first month equals the amount of the loan.
-remainingBalance = previousBalance - principalPaid
-    
-    iteration 0 remaining balance = loanAmount
+/* iteration 0 remaining balance = loanAmount
     interation 1 remaining balance = loanAmount - principalPayment
-    iteration 2 remaining balance = previous remaining balance - principalPayment
+    iteration 2 remaining balance = previous remaining balance - principalPayment */
+
+function calculatePayoffSchedule(returnObject) {
+
     
+
+    //create object to hold new values for table???
+    let payoffArray = [];
+
+    for (let i = 1; i <= returnObject.term; i++) {
+ 
+        payoffArray.push(i, returnObject.yourPayment.toFixed(2), returnObject.principal.toFixed(2), returnObject.interest.toFixed(2), "tbd" , "tbd");
+        
+    }
+
+    return payoffArray;
+
+}
+
+   /* //let remainingBalance = returnObject.loanAmount;
+    //let interest = returnObject.loanAmount * returnObject.monthlyRate;
+    //let principal = yourPayment - interest;
+
+    // calculate remaining balance. before 1st month this = loanAmount)
+    for (let i = 1; i <= returnObject.term; i++) {
+       
+        returnObject.remainingBalance -= returnObject.principal;
+
+        return payoffObject;
+
+    }
+
+
+    //for loop to calculate each month's interest
+    for (let i = 1; i <= returnObject.term; i++) {
+
     }
 
 */
 
-/*function principalPayment() {
-
-    yourPayment - interestPayment
-
-    principalPaid = monthlyPayment - interestPaid
-}
-
-function interestPayment(remainingBalance, monthlyRate) {
-
-    remainingBalance * monthlyRate
-} */
-
-
 /* DISPLAY: */
 
-function displayTotals(yourPayment, loanAmount, totalInterest, totalCost) {
+function displayTotals(returnObject) {
 
     document.getElementById("yourPayment").innerHTML = ` $${yourPayment.toFixed(2)}`;
     document.getElementById("totalPrincipal").innerHTML = ` $${loanAmount.toFixed(2)}`;
@@ -115,3 +147,5 @@ Remaining Balance before the very first month equals the amount of the loan.
 Interest Payment = Previous Remaining Balance * rate/1200
 Principal Payment = Total Monthly Payment - Interest Payment
 At end each month, Remaining Balance = Previous Remaining Balance - principal payments */
+
+
