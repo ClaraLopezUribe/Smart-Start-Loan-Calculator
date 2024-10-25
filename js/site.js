@@ -8,22 +8,15 @@ function getValues() {
     let term = document.getElementById("term").value;
     let interestRate = document.getElementById("interestRate").value;
 
-    /*  let remainingBalance = remainingBalance(loanAmount);
-    let interestPayment = interestPayment(remainingBalance);
-    let principalPayment = principalPayment();
-
-    interestPaid(previousBalance)
-    interestToDate()*/
-
     let returnObject = calculateTotals(loanAmount, term, interestRate);
 
     let payoffArray = calculatePayoffSchedule(returnObject);
 
     displayTotals(returnObject);
+
     displayScheduleTable(payoffArray);
 
 }
-
 
 /* LOGIC: */
 
@@ -57,20 +50,15 @@ function calculateTotals(loanAmount, term,interestRate) {
 
 
     return returnObject;
+
 }
 
 
-/* create amortization schedule */
-
-/* iteration 0 remaining balance = loanAmount
-    interation 1 remaining balance = loanAmount - principalPayment
-    iteration 2 remaining balance = previous remaining balance - principalPayment */
+/* create amortization schedule table*/
 
 function calculatePayoffSchedule(returnObject) {
 
-    
-
-    //create object to hold new values for table???
+    //create array to hold values for table rows
     let payoffArray = [];
 
     for (let i = 1; i <= returnObject.term; i++) {
@@ -82,27 +70,6 @@ function calculatePayoffSchedule(returnObject) {
     return payoffArray;
 
 }
-
-   /* //let remainingBalance = returnObject.loanAmount;
-    //let interest = returnObject.loanAmount * returnObject.monthlyRate;
-    //let principal = yourPayment - interest;
-
-    // calculate remaining balance. before 1st month this = loanAmount)
-    for (let i = 1; i <= returnObject.term; i++) {
-       
-        returnObject.remainingBalance -= returnObject.principal;
-
-        return payoffObject;
-
-    }
-
-
-    //for loop to calculate each month's interest
-    for (let i = 1; i <= returnObject.term; i++) {
-
-    }
-
-*/
 
 /* DISPLAY: */
 
@@ -155,66 +122,6 @@ function displayScheduleTable(payoffArray) {
 
        }
 }
-
- //Adjust for loop for SMART START APP
-    /* calculate remaining balance. before 1st month this = loanAmount)
-    
-        returnObject.remainingBalance -= returnObject.principal;
-
-        return payoffObject; */
-
-
-
-
-/***** DISPLAY function *****/
-
-/* Create a table to display the results of the fizzBuzz function
-function displayData(fbArray) {
-
-    // Get the table body element from the page
-    let tableBody = document.getElementById("results");
- 
-    // Get the template element from the page
-    let templateRow = document.getElementById("fbTemplate");
- 
-    // Clear the table first
-    tableBody.innerHTML = "";
- 
-    for (let index = 0; index < fbArray.length; index += 5) {
- 
-     // Make a copy/fragment of the template row with importNode
-     let tableRow = document.importNode(templateRow.content, true);
- 
-     // Get just the td and put them into an array to check its length
-     let rowCols = tableRow.querySelectorAll("td");
- 
-     rowCols[0].classList.add(fbArray[index]);
-     rowCols[0].textContent = fbArray[index];
-     rowCols[1].classList.add(fbArray[index+1]);
-     rowCols[1].textContent = fbArray[index+1];
-     rowCols[2].classList.add(fbArray[index+2]);
-     rowCols[2].textContent = fbArray[index+2];
-     rowCols[3].classList.add(fbArray[index+3]);
-     rowCols[3].textContent = fbArray[index+3];
-     rowCols[4].classList.add(fbArray[index+4]);
-     rowCols[4].textContent = fbArray[index+4];
- 
-     tableBody.appendChild(tableRow);
- 
-    }
- 
- }
- 
- 
-     
-    
-     
- /* TEMPLATE TAGS: VIDEO 35:14 */
-           
-         
-  
-
-
 
 /* Specifications:
 
