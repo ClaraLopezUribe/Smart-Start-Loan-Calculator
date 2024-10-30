@@ -1,3 +1,17 @@
+/* -------TO DO ----------*/
+
+// Refactor Display function: Format results to US Currency   (see CF Mortgage Calculator MVC intro video (minute 8:10)
+
+    /*  let currencyFormatter = newIntl.NumberFormat('en-US', {
+            style: 'currency', 
+            currency: 'USD',
+        })
+
+    */
+
+
+
+
 /* CONTROL: */
 
  // Don't forget to wire up an event listener to activate the JS : The initial function name must match exactly with the addEventListener parameter

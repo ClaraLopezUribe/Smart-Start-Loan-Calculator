@@ -107,6 +107,37 @@
                         </div>
                     </div>
                 </div>
+    <!---ALTERNATE LAYOUT STRUCTURE for Totals display---
+                <div class="col">
+    <div id="paymentTitle">
+        <p>Your Monthly Payments</p>
+    </div>
+    <p id="payment">@Model.Payment.ToString("C")
+    </p>
+    <div class="row">
+        <div class="col-6">
+            <label class="text-start">Total Principal</label>
+        </div>
+        <div class="col-6 text-end" id="totalPrincipal">
+            @Model.Amount.ToString("C")
+        </div>
+        <div class="col-6 ">
+            <label class="text-start">Total Interest</label>
+        </div>
+        <div class="col-6 text-end" id="totalInterest">
+            @Model.TotalInterest.ToString("C")
+        </div>
+        <div class="col-6">
+            <label class="text-start">Total Cost</label>
+        </div>
+        <div class="col-6 text-end" id="totalCost">
+            @Model.TotalCost.ToString("C")
+        </div>
+    </div>
+</div>    -----END --->
+
+
+
             </section>
 
             <div class="row">
