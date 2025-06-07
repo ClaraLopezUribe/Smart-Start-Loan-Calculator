@@ -34,7 +34,7 @@ function getValues() {
 
 /* LOGIC: */
 
-function calculateTotals(loanAmount, term,interestRate) {
+function calculateTotals(loanAmount, term, interestRate) {
 
     // convert user input to Numbers; can be accomplished a number of ways, as shown below
     loanAmount = Number(loanAmount);
